@@ -16,8 +16,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "facebook", // Usually your GitHub org/user name.
-  projectName: "docusaurus", // Usually your repo name.
+  organizationName: "FrancescoXX", // Usually your GitHub org/user name.
+  projectName: "free-web3-resources", // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -57,21 +57,11 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       algolia: {
-        // If Algolia did not provide you any appId, use 'BH4D9OD16A'
         appId: "TK013U555M",
-
-        // Public API key: it is safe to commit it
         apiKey: "868e35b771ee2f9116e289cf1ba63d96",
-
         indexName: "-free-web3-resources",
-
-        // Optional: see doc section below
-
-        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-
-        // Optional: Algolia search parameters
-
-        //... other Algolia params
+        searchParameters: {},
+        searchPagePath: 'search',
       },
       colorMode: {
         defaultMode: "dark",
@@ -119,7 +109,7 @@ const config = {
                 href: "https://discord.com/invite/JZ2btyTfzQ",
               },
               {
-                label: "Twitter",
+                label: "X",
                 href: "https://twitter.com/4ccommunityhq",
               },
             ],
@@ -134,13 +124,13 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} By 4c.`,
+        copyright: `Copyright © ${new Date().getFullYear()} By Francesco Ciulla, 4C Founder`,
       },
 
       announcementBar: {
         id: "Join us",
         content:
-          'Are you a Content Creator? <a target="_blank" rel="noopener noreferrer" href="https://www.4c.rocks">Join the Community</a>',
+          'Are you a Content Creator? <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/4ccommunity">Join the Community</a>',
         backgroundColor: "#fafbfc",
         textColor: "#091E42",
         isCloseable: true,
