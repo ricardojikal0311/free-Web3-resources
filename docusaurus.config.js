@@ -56,11 +56,13 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // algolia: {
-      //   appId: "TK013U555M",
-      //   apiKey: "868e35b771ee2f9116e289cf1ba63d96",
-      //   indexName: "-free-web3-resources",
-      // },
+      algolia: {
+        appId: "TK013U555M",
+        apiKey: "868e35b771ee2f9116e289cf1ba63d96",
+        indexName: "-free-web3-resources",
+        searchParameters: {},
+        searchPagePath: 'search',
+      },
       colorMode: {
         defaultMode: "dark",
         disableSwitch: false,
@@ -107,7 +109,7 @@ const config = {
                 href: "https://discord.com/invite/JZ2btyTfzQ",
               },
               {
-                label: "Twitter",
+                label: "X",
                 href: "https://twitter.com/4ccommunityhq",
               },
             ],

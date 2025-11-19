@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 
@@ -14,7 +14,7 @@ const FeatureList = [
     title: 'Beginner',
     icon: 'img/icons/beginner.svg',
     items: [
-      {url: "/docs/blockchains/blockchains", text: "Blockchains"},
+      {url: "/docs/blockchains", text: "Blockchains"},
       {url: "/docs/identity", text: "Identity"},
       {url: "/docs/node-providers", text: "Node Providers"},
       {url: "/docs/oracles", text: "Oracles"},
@@ -38,6 +38,7 @@ const FeatureList = [
       {url: "/docs/sdks", text: "SDKs"},
       {url: "/docs/notification", text: "Notifications"},
       {url: "/docs/data-network", text: "Data Network"},
+      {url: "/docs/cross-chain", text: "Cross-Chain"},
     ]
   },
   
@@ -49,33 +50,55 @@ function FeatureItem({url, text}){
   );
 }
 
-function Feature({title, icon, items }) {
+
+const Feature = React.forwardRef(({ title, icon, items }, ref) => {
   return (
-    <article className={clsx('col col--4')}>
+    <section className={clsx('col col--4')}>
       <div className={styles.homecard}>
-        <img src={icon} className={styles.homeIcon}></img>
+        <img src={icon} className={styles.homeIcon} alt={title} />
         <h2>{title}</h2>
-        <div className={styles.listContainer}>
-        <ul>
-          {items.map((props, idx) => (
-            <FeatureItem key={idx} {...props} />
-          ))}
-        </ul>
+        <div ref={ref} className={styles.listContainer}>
+          <ul>
+            {items.map((props) => (
+              <FeatureItem key={props.url} {...props} />
+            ))}
+          </ul>
         </div>
       </div>
-    </article>
+    </section>
   );
-}
-
+});
 
 export default function HomepageFeatures() {
+  const featureRefs = useRef([]);
+
+  useEffect(() => {
+    let tallestHeight = 0;
+
+    featureRefs.current.forEach(ref => {
+      if (ref && ref.offsetHeight > tallestHeight) {
+        tallestHeight = ref.offsetHeight;
+      }
+    });
+
+    featureRefs.current.forEach(ref => {
+      if (ref) {
+        ref.style.height = `${tallestHeight}px`;
+      }
+    });
+  }, []);
+
   return (
     <section className={styles.features}>
-        <ul className={styles.grid3col}>
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
-        </ul>
+      <ul className={styles.grid3col}>
+        {FeatureList.map((props, idx) => (
+          <Feature 
+            key={props.title} 
+            ref={el => featureRefs.current[idx] = el} 
+            {...props} 
+          />
+        ))}
+      </ul>
     </section>
   );
 }
